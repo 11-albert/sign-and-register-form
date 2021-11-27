@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="hero" id="cls"> 
+    <span class="cls"  onclick="closeForm()">x</span>
+    <div class="form-box">
+        <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" class="togggle-btn" onclick="login()">Log In</button>
+            <button type="button" class="togggle-btn" onclick="register()">Register</button>
+        </div>
+        <form id="login" action="" class="input-groups" onsubmit="return validateForm()">
+            <input  type="text" class="input-field" placeholder="User Id"  id="username">
+            <p id="userError" class="error"></p>
+            <input id="userpass" type="text" class="input-field" placeholder="Enter password" >
+            <p id="passError" class="error"></p>
+            <input type="checkbox" class="check-box"><span>Remember password</span> 
+            <button type="submit" class="submit-btn">Log In</button>
+        </form>
+        <form id="register" action="" class="input-groups" >
+            <input type="text" class="input-field" placeholder="User Id"  required>
+           
+            <input type="email" class="input-field" placeholder="Email Id" required>
+            
+            <input type="text" class="input-field" placeholder="Enter password" required>
+           
+            <input type="checkbox" class="check-box"><span>I agree to the terms & coondition</span> 
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+</div>
+    <script>
+        var x = document.getElementById("login");  
+        var y = document.getElementById("register");
+        var z = document.getElementById("btn");
+        var c = document.getElementById("cls");
+        function register(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+        }
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px";
+        }
+        function closeForm(){
+            c.style.display = "none"
+        }
+        let username = document.getElementById("username");
+        let password = document.getElementById("userpass");
+        let flag = 1;
+
+        function validateForm(){
+            if(username.value == ""){
+                document.getElementById("userError").innerHTML = "user name is empty";
+                flag = 0;
+            }else if(username.value.length < 3){
+                document.getElementById("userError").innerHTML = "user name is require min 3 character";
+                flag = 0;
+            }else{
+                document.getElementById("userError").innerHTML = "";
+                flag = 1;
+            }
+            if(password.value == ""){
+                document.getElementById("passError").innerHTML = "password is empty";
+                flag = 0;
+            }else{
+                document.getElementById("passError").innerHTML = "";
+                flag = 1;
+            }
+             
+            if(flag){
+                return true;
+            }else{
+                return false;
+            }
+        }
+     
+       
+    </script>
+</body>
+</html>
